@@ -3,8 +3,8 @@ project:
   output-dir: docs
 
 website:
-  title: "Your Name - Data Science Portfolio"
-  description: "A showcase of my data science projects and learning journey"
+  title: "My Data Science Blog"
+  description: "A blog with tutorials about data science topics"
   
   navbar:
     background: primary
