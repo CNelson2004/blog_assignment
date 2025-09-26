@@ -1,0 +1,56 @@
+---
+title: "Storytelling with Small Data: Beginner-Friendly Visualizations in Python"
+jupyter: python3
+format: html
+---
+Data is more useful when we can see it. In this post, you will learn how to use the pandas and matplotlib libraries in Python to create simple, clear visualizations from a small dataset.
+
+## Obtaining a dataset
+In order to visualize data, we first need to obtain some. We will use pandas to create a small dataset. 
+
+First, we begin by importing our required libraries, in this case, pandas and matplotlib.
+```py
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+Now, we will decide how many features we want our dataset to have. These will become our columns.\
+For this example, our dataset with have 4 features: name, gpa, major, and year
+
+Next we decide how many entries we want in our dataset. For this example, we will do only 10.
+
+Now, to do this in code, we first create 4 lists of 10 items.
+```py
+name = ["Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona", "George", "Hannah", "Isaac", "Julia"]
+
+gpa = [3.5, 2.8, 3.9, 3.2, 2.5, 3.7, 2.9, 3.8, 3.1, 3.6]  
+
+major = ["Math", "Computer Science", "Statistics", "Math", "Computer Science", "Statistics", "Math", "Computer Science", "Statistics", "Math"]
+
+year = ["Freshman", "Sophomore", "Junior", "Senior", "Freshman", "Sophomore", "Junior", "Senior", "Freshman", "Sophomore"]
+```
+Now that we have created our features, we put them into a pandas dataset.
+
+```py
+data = {
+    "Name": name,
+    "GPA": gpa,
+    "Major": major,
+    "Year": year
+}
+
+df = pd.DataFrame(data)
+```
+Now we can begin looking at our data./
+Before we start graphing, we can look at a small portion of our data, or the entire set.
+```py
+df.head()
+```
+
+```py
+print(df)
+```
+
+Now we can begin plotting our data using matplotlib.
+```py
+
+```
