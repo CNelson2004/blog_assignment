@@ -211,3 +211,4 @@ __marimo__/
 #stupid CS 312 automatic testing thing
 .vscode/
 settings.json
+**/*.quarto_ipynb
