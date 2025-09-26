@@ -12,7 +12,7 @@ website:
       - text: "Home"
         href: index.md
       - text: "Data Visualization"
-        href: blog.md
+        href: blog.qmd
     right:
       - icon: github
         href: https://github.com/your-username
