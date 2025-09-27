@@ -102,36 +102,48 @@ The first one we will be showing is a histogram, in which we will look at the di
 
 This will be achieved by using plt.hist(), which will create histogram of our data for us. To get it to plot only the gpa's we will call all the information from the gpa column.
 
+One part of using matplotlib, is that you should always use the .show() function after creating a graph. If you don't you get a bunch of return text that you don't want to see when you creating your graph. Allow me to show you the difference.
+
 ```{python}
 plt.hist(df["gpa"])
 ```
 
-However, you may notice that this graph doesn't look very nice. It ranges from 1.4 to 3.9. This is because we haven't specified the optional 'bin' and 'range' parameter. If bin isn't specified then matplotlib automatically create 10 evenly spaced bins. If range isn't specified, then it uses the natural min and max of your data. 
+```{python}
+plt.hist(df["gpa"])
+plt.show()
+```
+
+Now, you may notice that the graph above, even without the extra text above it, doesn't look very nice. It ranges from 1.4 to 3.9. This is because we haven't specified the optional 'bin' and 'range' parameter. If bin isn't specified then matplotlib automatically create 10 evenly spaced bins. If range isn't specified, then it uses the natural min and max of your data. 
 
 However, we know that gpas can range from 0.0 to 4.0, thus we can adjust. 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0))
+plt.show()
 ```
 
 Now, our data is more accurately represented. Since we have the range down, lets see what it looks like with different amounts of bins
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=4)
+plt.show()
 ```
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8)
+plt.show()
 ```
 
 These are not the only options for histograms. What if we want to make the bars go horizontal instead of vertical? That can be done by specifying the 'orientation' parameter to be horizontal. (By default it is vertical)
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8,orientation='horizontal')
+plt.show()
 ```
 
 Currently, the y-axis shows the count for how many values fall into each bin. We can change this to show what percentage of the data falls within each bin by specifying the density parameter. 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8, density = True)
+plt.show()
 ```
 
 At first glance, this looks like it doesn't show the probabilities correctly. After all, .2+.2+.6+.2+.8 != 1, in fact, it equals 2. This is because You need to factor in, not only the height of the bins, but the width as well. Since each bin is 0.5 units long, when we multiply each bin's height by 0.5, and then add them together, we get 1.
@@ -148,20 +160,24 @@ Now that the data is shown and organized correctly in the graph, we can make it 
 The next parameter we are going to look at is 'histtype,' which specifies which type of bars you want for your histogram. There are four options, bar, (which is the default one we've been using), step, stepfilled, and barstacked. We will look at each.
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8, histtype = 'step')
+plt.show()
 ```
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8, histtype = 'stepfilled')
+plt.show()
 ```
 
 Now, at first glance it looks like it is no different from the normal 'bars' histtype. The difference becomes more noticeable once we color in the edge lines, which by default are not shown. 
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8, histtype = 'bar', edgecolor='black')
+plt.show()
 ```
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8, histtype = 'stepfilled', edgecolor = 'black')
+plt.show()
 ```
 
 Now, the barstacked parameter is different, as it stacks bars from multiple datasets on top of each other. Seeing as we are only using one dataset, in order to accurately show the execution of this parameter, we need to create some more data. Since we only care about a single feature, gpa, we will make it a simple pandas series. 
@@ -173,26 +189,31 @@ more_data = pd.Series([2.3, 3.8, 1.4, 2.9, 3.5, 1.8, 2.1, 3.0, 1.2, 0.9])
 Now we can properly call histtype with barstacked.
 ```{python}
 plt.hist([df["gpa"],more_data],range=(0.0,4.0),bins=8, histtype = 'barstacked')
+plt.show()
 ```
 
 Now, what if we don't want our bars to be touching, what if we want some space? Then we can change the 'rwidth' parameter. Naturally it defaults to 1, which makes the bars touch, by reducing that number we can can increase the space in between the bars. 
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8, histtype = 'bar', rwidth = 0.9)
+plt.show()
 ```
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8, histtype = 'bar', rwidth = 0.5)
+plt.show()
 ```
 
 With these resized bars, they might not look as good being in the middle of their section, this is why we can move them around using the 'align' parameter. By default, it is set to 'mid,' however, we can specify to align left or right. 
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8, histtype = 'bar', rwidth = 0.5, align = 'left')
+plt.show()
 ```
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8, histtype = 'bar', rwidth = 0.5, align = 'right')
+plt.show()
 ```
 
 Now that we have our data where we want it to be, we can choose what color to portray it in. Sometimes blue isn't always the right choice. We can specify this color by using the 'color' parameter.
@@ -200,12 +221,14 @@ Now that we have our data where we want it to be, we can choose what color to po
 
 ```{python}
 plt.hist(df["gpa"],range=(0.0,4.0),bins=8, histtype = 'bar', rwidth = 0.9, color = "green")
+plt.show()
 ```
 
 What if we have a scenario with multiple datasets, and want to specify colors for each? Then we simply puts the colors in a list that is in the same order as the list of datasets we pass in. 
 
 ```{python}
 plt.hist([df["gpa"],more_data],range=(0.0,4.0),bins=8, histtype = 'barstacked', color=["purple", "pink"])
+plt.show()
 ```
 
 However, it is not very obvious which dataset belongs to which bars. To clarify this, we can use the label parameter. We can do this similarly to how we did colors, by inputting a list that corresponds to the inputted datasets.
@@ -218,15 +241,155 @@ plt.legend()
 plt.show()
 ```
 
-We could even make our graph more intricate by using matplotlib's label function to specify the label for the x-axis and the y-axis.
+This wraps up the most important details to know about histograms. Next we will move on to some of matplotlib's universal functions. 
+
+### Universal Matplotlib Functions
+
+Now that we understand how to create a nice histogram, We can start using some of matplotlib's universal functions to make the graph easier to understand. (These work not only with histograms, but most other graphs, and will be used going forward)
+
+First there are the plot labels, these are specific to certain axes. In our case, .xlabel() and .ylabel(). You simply fill these in with a string of your choice. They should the unit of measurement for each of your axes. 
+
 ```{python}
-plt.hist([df["gpa"],more_data],range=(0.0,4.0),bins=8, histtype = 'barstacked', color=["purple", "pink"], label=["Morning Class","Evening Class"])
+plt.hist(df["gpa"],range=(0.0,4.0),bins=8)
 plt.xlabel("GPA")
 plt.ylabel("Count")
-plt.legend()
 plt.show()
 ```
 
-This wraps up the most important details to know about histograms. Next we will move on to ____
+Additionally, we can set a title for the graph overall by using the .title() function and inputting a string for our title. 
 
-###
+```{python}
+plt.hist(df["gpa"],range=(0.0,4.0),bins=8)
+plt.title("Grades")
+plt.show()
+```
+
+If we want to we could also add grid lines by setting plt.grid() to True. (This isn't the most useful for a small histogram like this, but I'm sure you could see how this would be useful on something like a scatter plot)
+
+```{python}
+plt.hist(df["gpa"],range=(0.0,4.0),bins=8)
+plt.grid(True)
+plt.show()
+```
+
+Finally, we can add in a bit of text to our graph using plt.text(). We can use this to explain context or any other information needed to understand our graph.
+
+Instead of simply taking in a string, boolean, or simply being called empty, we need to specify where our text is going in the graph. The parameters for this function are .text(x-coordinate,y-coordinate,string of text). 
+
+This can be done in two ways. First, with a fixed position by setting the x and y coordinate manually, like so.
+
+```{python}
+plt.hist(df["gpa"],range=(0.0,4.0),bins=8)
+plt.text(.1, 4, "These are the best and worst classes")
+plt.show()
+```
+
+However, this isn't the most convenient way, and could result in lots of trial and error before finding the right location, especially if you want it somewhere simple. For example, lets say that you want it in the top right corner of the graph. 
+
+Then, instead of specifying x and y as direct values, we can specify them as coordinates relative to their axis. For example, 1 would be the max, and 0 would be the minimum. However, for this to work, we must tell matplotlib that we are changing x and y from units to relative units. This is done with the 'transform' parameter, specifically by making it equal plt.gca().transAxes.
+
+To translate that code to english. gca stands for "get current axes," and .transAxes tells it to transform into relative axis units. 
+
+Putting this together allows us to do this.
+
+```{python}
+plt.hist(df["gpa"],range=(0.0,4.0),bins=8)
+plt.text(1.0, 1.0, "This is the best class", transform=plt.gca().transAxes
+)
+plt.show()
+```
+
+However, you may notice that it isn't staying in the corner, it is actually going outside the graph. to keep our text inside our graph we need to specify a few more variables. This being, 'va' and 'ha.' (va is vertical alignment, while ha is horizontal alignment.)
+
+These parameters are specified simply with a string corresponding to the location of where we want our text. The options for these are, va: 'bottom', 'center', 'top',, ha: 'left', 'center', and 'right'
+
+(va actually also has 'baseline' and 'center_baseline,' but those aren't as useful, so you don't need to worry about remembering them as much.)
+
+```{python}
+plt.hist(df["gpa"],range=(0.0,4.0),bins=8)
+plt.text(1.0, 1.0, "This is the best class", ha="right", va="top", transform=plt.gca().transAxes)
+plt.show()
+```
+
+However, even this doesn't look quite right. It is too squished. We can fix this by offsetting a little bit from being exactly in the corner.
+
+```{python}
+plt.hist(df["gpa"],range=(0.0,4.0),bins=8)
+plt.text(0.95, 0.95, "This is the best class", ha="right", va="top", transform=plt.gca().transAxes)
+plt.show()
+```
+
+Putting everything we have learned together we can get a graph that looks like this. 
+
+```{python}
+ax = plt.gca()
+xlim = ax.get_xlim()
+ylim = ax.get_ylim()
+
+plt.hist([df["gpa"],more_data],range=(0.0,4.0),bins=8, rwidth = 0.9, histtype = 'barstacked', color=["purple", "pink"], label=["Morning Class","Evening Class"])
+plt.legend()
+plt.xlabel("GPA")
+plt.ylabel("Count")
+plt.title("Grades")
+plt.text(0.95, 0.95, "These are the best and worst classes", ha="right", va="top", transform=plt.gca().transAxes)
+plt.grid(True)
+plt.show()
+```
+
+This isn't necessarily the nicest looking graph, but it does show you what all our options put together look like, and when you make your graphs, you can pick and choose for what matters most to telling the story of your data. 
+
+Now, there is one final universal function left to cover, which is plt.subplots(). This function allows you to put multiple smaller graphs into one large picture.
+
+First, .subplots() requires the amount of total plots you want in your picture. You tell it this by inputting the number of rows and the number of columns which equal your total number of graphs. For this example we will do 2 rows with 3 columns, for a total of 6 graphs. 
+
+```{python}
+fig, axes = plt.subplots(2, 3)
+```
+
+This returns a figure for us to fill in and the axes of the total picture. 
+
+For this example, we will take our bar graph, and simply show off different colors, but just know you can have various and different graphs for each slot. (For example, you could have 3 bar graphs, 2 whisker plots and a scatterplot all put together.) 
+
+We can then begin filling them in with our graphs by specifying where in the overall picture they go. We do this by specifying the two axes correlating to their position.
+
+(Please note that you must do plt.subplots() and name the axes in the same section of code as filling out the axes for it to work.)
+
+```{python}
+fig, axes = plt.subplots(2, 3)
+
+axes[0, 0].hist(df["gpa"],range=(0.0,4.0),bins=8,color="lightblue")
+axes[0, 1].hist(df["gpa"],range=(0.0,4.0),bins=8,color="yellow")
+axes[0, 2].hist(df["gpa"],range=(0.0,4.0),bins=8,color="teal")
+axes[1, 0].hist(df["gpa"],range=(0.0,4.0),bins=8,color="magenta")
+axes[1, 1].hist(df["gpa"],range=(0.0,4.0),bins=8,color="cyan")
+axes[1, 2].hist(df["gpa"],range=(0.0,4.0),bins=8,color="brown")
+
+plt.show()
+```
+
+Now that the graphs are plotted, we should make sure that people actually understand what they are looking at. We can do this by adding a title to each boxplot by specifying a title for that axis. Additionally, we can add an overall title that covers all our graphs by using the plt.suptitle().
+
+We will also use the tight_layout() function to ensure that our plots don't accidentally overlap with each other, and generally make our graphs look neater next to each other. 
+
+```{python}
+fig, axes = plt.subplots(2, 3)
+
+axes[0, 0].hist(df["gpa"],range=(0.0,4.0),bins=8,color="blue")
+axes[0, 0].set_title("Class Blue")
+axes[0, 1].hist(df["gpa"],range=(0.0,4.0),bins=8,color="yellow")
+axes[0, 1].set_title("Class Yellow")
+axes[0, 2].hist(df["gpa"],range=(0.0,4.0),bins=8,color="teal")
+axes[0, 2].set_title("Class Teal")
+axes[1, 0].hist(df["gpa"],range=(0.0,4.0),bins=8,color="magenta")
+axes[1, 0].set_title("Class Magenta")
+axes[1, 1].hist(df["gpa"],range=(0.0,4.0),bins=8,color="cyan")
+axes[1, 1].set_title("Class Cyan")
+axes[1, 2].hist(df["gpa"],range=(0.0,4.0),bins=8,color="brown")
+axes[1, 2].set_title("Class Brown")
+
+plt.suptitle("Some graph colors")
+plt.tight_layout()
+plt.show()
+```
+
+This covers the most important universal functions in matplotlib. Next, we will move on to boxplots. 
