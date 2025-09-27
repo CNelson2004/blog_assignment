@@ -1,13 +1,16 @@
 ---
-title: "Storytelling with Small Data: Beginner-Friendly Visualizations in Python"
+title: "An Introduction to Visualizations in Python"
 jupyter: jupyterkernel
 format: html
 ---
-# Introduction
-Data is more useful when we can see it. In this post,  you will learn how to use the pandas and matplotlib libraries in Python to create simple,  clear visualizations from a small dataset. Specifically,  you will learn how to create a dataset in pandas,  and then use matplotlib to plot for one or multiple datasets,  alongside plotting for feature and the relationship between two or more. 
 
-# Learning Pandas
-## Creating a dataset
+## Introduction
+Data is more useful when we can see it. In this post,  you will learn how to use the pandas and matplotlib libraries in Python to create simple, clear visualizations from a small dataset. Specifically, you will learn how to create a dataset in pandas,  and then use matplotlib to plot for one or multiple datasets for a single feature.
+
+(A future blog post will cover downloading a dataset into pandas, and plotting for the relationship between two or more features.)
+
+## Learning Pandas
+### Creating a dataset
 In order to visualize data,  we first need to obtain some. We will use pandas to create a small dataset. 
 
 First,  we begin by importing our required libraries,  in this case,  pandas and matplotlib.
@@ -47,7 +50,7 @@ data = {
 df = pd.DataFrame(data)
 ```
 
-## Inspecting a dataset
+### Inspecting a dataset
 
 Now we can begin looking at our data.
 Before we start graphing,  we can look at a small portion of our data,  using the .head() function,  or the entire set.
@@ -93,8 +96,7 @@ This actually returns a pandas Series instead of pandas DataFrame,  but the spec
 
 With this basic pandas knowledge at our disposal,  we can now begin learning how to visualize our data.
 
-# Visualizing
-## Distribution Graphs (1D Graphs)
+## Distribution Graphs (1 Feature)
 First we will show how you can plot a single feature with various distribution graphs.
 
 ### Histogram
@@ -641,18 +643,26 @@ This covers the all the basics that you should need for creating boxplots. Next,
 
 ### Density
 
-## Relationship Graphs (2D Graphs)
 
-So far,  we’ve looked at visualizations that focus on one variable at a time. These are great for showing distributions,  but often in data science,  what we care about is the relationship between two variables.
+## Conclusion
 
-In this section,  we’ll cover how to use matplotlib to show relationships between pairs of features in our dataset.
+Over the course of this tutorial you have learned how to create a histogram, boxplot, and density plot with as much or as little detail as desired. 
 
-The first type of plot we’ll cover is the scatter plot.
+However, how do you actually use these plots? When do you specifically use them? It depends on what you are doing with your data. If you are looking at the distribution of one piece of data, then use a histogram, boxplot, or density plot. You can decide which to use by what you are trying to find in your data. If you need the shape of your data, then use histogram or density plot. If you need the statistics from your data to be shown, then consider using a boxplot instead. 
 
-### Scatterplot
+If you need to compare the same piece of data in multiple datasets. You can still use any of these plots, it just depends on what you specifically need. If you need to see what the cumulative count is in your datasets, use a stacked histogram. If you need to see how the median, IQR, and such compare for the datasets, then use boxplots. If you need to see how the shape of your data is different from one another, then use density plots. 
 
-### Lineplot
+This tutorial is intended to be a general introduction to some of matplotlib's plots and the most important parameters in each. As I have said before, not all parameters are included. If you want more information on how matplotlib's graphs, then I refer you to their plot page, which contains all their plots: [Matplotlib_plots](https://matplotlib.org/stable/plot_types/index.html)
 
-### Barplot 
+I encourage you to use the skills you learned here in making these plots to go and try to craft some of the other plots, such as a violin plot or a stem plot. I highly suggest that you open up your own python file and begin experimenting with, not just the graphs that I have given you, but all the graphs that matplotlib has to offer. Knowing what kind of plots there are and how to use them, will make it far easier when you need to select a plot in the future for your data. Additionally, coding up that plot, and coding it up to look nice, will be far easier if you have some practice and knowledge beforehand. 
 
-# Conclusion
+If you are even more interested in plotting and want to go further, then I recommend Seaborn. This is a library that is built on top of matplotlib that allows you further enhance the aesthetics of your visualizations. You can find the introduction to Seaborn here: [Seaborn_introduction](https://seaborn.pydata.org/tutorial/introduction)
+
+Additionally, if you want to use some real datasets from off the internet, rather than simply creating your own data to work with, then I recommend using Zenodo. They offer thousands of open source datasets that you can download and use to further your visualization skills. You can find some datasets from them here: [Zenodo_datasets](https://zenodo.org/search?q=&f=access_status%3Aopen&f=resource_type%3Adataset&l=list&p=1&s=10&sort=newest)
+
+In fact, I highly recommend finding a dataset that you like and believe you can model, and using some of the plots that we have described here to visualize that data and better understand it. 
+
+Remember, a critical step in understanding data, is actually being able to see the data. Have fun visualizing!
+
+(Plans are in the works for a blog post are visualizing the relationship between features, so keep an eye out for that!)
+-Cassandra

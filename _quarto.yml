@@ -13,6 +13,8 @@ website:
         href: index.md
       - text: "Data Visualization"
         href: blog.qmd
+      - text: "Data Visualization-2"
+        href: blog2.qmd
     right:
       - icon: github
         href: https://github.com/your-username

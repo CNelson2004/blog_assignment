@@ -1,0 +1,51 @@
+---
+title: "An Introduction to Visualizations in Python-Part 2"
+jupyter: jupyterkernel
+format: html
+---
+
+# In Progress
+*Post in progress...*
+
+**Please check again later for a completed post, the following is merely an outline.**
+
+
+
+
+
+## Introduction
+Hello again. In my previous visualization post we discussed how to plot graphs when you are looking at exactly 1 feature, this time we will continue our learning by moving on to 2 features and further!
+
+## Pandas
+### Downloading a dataset
+Before we begin, we need to download a dataset to work with. To do so, we will be using ...
+
+
+### Inspecting the dataset
+Now we will find out exactly what data we are working with. By this, I mean that we will check exactly how the information is stored within our DataFrame. 
+
+
+## Relationship Graphs (2 Features)
+In a previous post we’ve looked at visualizations that focus on one variable at a time. These are great for showing distributions, but often in data science, what we care about is the relationship between at least two variables.
+
+In this section, we’ll cover how to use matplotlib to show relationships between pairs of features in our dataset.
+
+The first type of plot we’ll cover is the scatter plot.
+
+### Scatterplot
+
+
+### Lineplot
+
+
+### Barplot 
+
+
+## 3D Graphs
+For this section, we will only cover how to use the scatterplot we are familiar with to move from a 2D into a 3D setting.
+
+### Scatterplot
+
+
+## Conclusion 
+
