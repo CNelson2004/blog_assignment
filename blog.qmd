@@ -3,10 +3,11 @@ title: "Storytelling with Small Data: Beginner-Friendly Visualizations in Python
 jupyter: jupyterkernel
 format: html
 ---
-Data is more useful when we can see it. In this post, you will learn how to use the pandas and matplotlib libraries in Python to create simple, clear visualizations from a small dataset.
+# Introduction
+Data is more useful when we can see it. In this post, you will learn how to use the pandas and matplotlib libraries in Python to create simple, clear visualizations from a small dataset. Specifically, you will learn how to create a dataset in pandas, and then use matplotlib to plot for one or multiple datasets, alongside plotting for feature and the relationship between two or more. 
 
-## Learning Pandas
-### Creating a dataset
+# Learning Pandas
+## Creating a dataset
 In order to visualize data, we first need to obtain some. We will use pandas to create a small dataset. 
 
 First, we begin by importing our required libraries, in this case, pandas and matplotlib.
@@ -46,7 +47,7 @@ data = {
 df = pd.DataFrame(data)
 ```
 
-### Inspecting a dataset
+## Inspecting a dataset
 
 Now we can begin looking at our data.
 Before we start graphing, we can look at a small portion of our data, using the .head() function, or the entire set.
@@ -92,10 +93,9 @@ This actually returns a pandas Series instead of pandas DataFrame, but the speci
 
 With this basic pandas knowledge at our disposal, we can now begin learning how to visualize our data.
 
-## Visualizing
-In this tutorial, visualization will be done using matplotlib.
-
-First we will show how you can plot a single feature.
+# Visualizing
+## Distribution Graphs (1D Graphs)
+First we will show how you can plot a single feature with various distribution graphs.
 
 ### Histogram
 The first one we will be showing is a histogram, in which we will look at the distribution of gpa.
@@ -245,7 +245,7 @@ This wraps up the most important details to know about histograms. Next we will 
 
 ### Universal Matplotlib Functions
 
-Now that we understand how to create a nice histogram, We can start using some of matplotlib's universal functions to make the graph easier to understand. (These work not only with histograms, but most other graphs, and will be used going forward)
+Before we continue to the next graph, there are some functions not directly tied to any graph that we should know. These are matplotlib functions that are universal to all graphs.
 
 First there are the plot labels, these are specific to certain axes. In our case, .xlabel() and .ylabel(). You simply fill these in with a string of your choice. They should the unit of measurement for each of your axes. 
 
@@ -322,10 +322,6 @@ plt.show()
 Putting everything we have learned together we can get a graph that looks like this. 
 
 ```{python}
-ax = plt.gca()
-xlim = ax.get_xlim()
-ylim = ax.get_ylim()
-
 plt.hist([df["gpa"],more_data],range=(0.0,4.0),bins=8, rwidth = 0.9, histtype = 'barstacked', color=["purple", "pink"], label=["Morning Class","Evening Class"])
 plt.legend()
 plt.xlabel("GPA")
@@ -392,4 +388,266 @@ plt.tight_layout()
 plt.show()
 ```
 
+Finally, we can add one more parameter to .subplots(). This parameter is called 'figsize,' and controls how large the overall graphs appears. Here is are a few examples of our previous subplot graph in various sizes, ((12,8),(10,6),(8,4)). You may need to experiment to find a size that perfectly fits your graphs.
+
+```{python}
+fig, axes = plt.subplots(2, 3, figsize=(12,8))
+
+axes[0, 0].hist(df["gpa"],range=(0.0,4.0),bins=8,color="blue")
+axes[0, 0].set_title("Class Blue")
+axes[0, 1].hist(df["gpa"],range=(0.0,4.0),bins=8,color="yellow")
+axes[0, 1].set_title("Class Yellow")
+axes[0, 2].hist(df["gpa"],range=(0.0,4.0),bins=8,color="teal")
+axes[0, 2].set_title("Class Teal")
+axes[1, 0].hist(df["gpa"],range=(0.0,4.0),bins=8,color="magenta")
+axes[1, 0].set_title("Class Magenta")
+axes[1, 1].hist(df["gpa"],range=(0.0,4.0),bins=8,color="cyan")
+axes[1, 1].set_title("Class Cyan")
+axes[1, 2].hist(df["gpa"],range=(0.0,4.0),bins=8,color="brown")
+axes[1, 2].set_title("Class Brown")
+
+plt.suptitle("Some graph colors")
+plt.tight_layout()
+plt.show()
+
+fig, axes = plt.subplots(2, 3, figsize=(10,6))
+
+axes[0, 0].hist(df["gpa"],range=(0.0,4.0),bins=8,color="blue")
+axes[0, 0].set_title("Class Blue")
+axes[0, 1].hist(df["gpa"],range=(0.0,4.0),bins=8,color="yellow")
+axes[0, 1].set_title("Class Yellow")
+axes[0, 2].hist(df["gpa"],range=(0.0,4.0),bins=8,color="teal")
+axes[0, 2].set_title("Class Teal")
+axes[1, 0].hist(df["gpa"],range=(0.0,4.0),bins=8,color="magenta")
+axes[1, 0].set_title("Class Magenta")
+axes[1, 1].hist(df["gpa"],range=(0.0,4.0),bins=8,color="cyan")
+axes[1, 1].set_title("Class Cyan")
+axes[1, 2].hist(df["gpa"],range=(0.0,4.0),bins=8,color="brown")
+axes[1, 2].set_title("Class Brown")
+
+plt.suptitle("Some graph colors")
+plt.tight_layout()
+plt.show()
+
+fig, axes = plt.subplots(2, 3, figsize=(8,4))
+
+axes[0, 0].hist(df["gpa"],range=(0.0,4.0),bins=8,color="blue")
+axes[0, 0].set_title("Class Blue")
+axes[0, 1].hist(df["gpa"],range=(0.0,4.0),bins=8,color="yellow")
+axes[0, 1].set_title("Class Yellow")
+axes[0, 2].hist(df["gpa"],range=(0.0,4.0),bins=8,color="teal")
+axes[0, 2].set_title("Class Teal")
+axes[1, 0].hist(df["gpa"],range=(0.0,4.0),bins=8,color="magenta")
+axes[1, 0].set_title("Class Magenta")
+axes[1, 1].hist(df["gpa"],range=(0.0,4.0),bins=8,color="cyan")
+axes[1, 1].set_title("Class Cyan")
+axes[1, 2].hist(df["gpa"],range=(0.0,4.0),bins=8,color="brown")
+axes[1, 2].set_title("Class Brown")
+
+plt.suptitle("Some graph colors")
+plt.tight_layout()
+plt.show()
+```
+
 This covers the most important universal functions in matplotlib. Next, we will move on to boxplots. 
+
+### Boxplot
+First of all, to create a boxplot, we simply use .boxplot(). Just like with bar graphs, we can choose to show data from one set of data, or from multiple. 
+
+```{python}
+plt.boxplot(df["gpa"])
+plt.show()
+```
+
+```{python}
+plt.boxplot([df["gpa"],more_data])
+plt.show()
+```
+
+Once we have multiple sets of data, we can also add a label to differentiate them, just like with our histograms.
+
+```{python}
+plt.boxplot([df["gpa"],more_data],labels=["Class A", "Class B"])
+plt.show()
+```
+
+Now, these boxplots show a lot of information, but what they don't show is where the mean is relatively in all this data. We can change this by using the 'showmeans' parameter. By setting it to true
+
+```{python}
+plt.boxplot(df["gpa"],showmeans=True)
+plt.show()
+```
+
+But what if we want this mean to shown as a line instead of a point? We can manipulate that as well by using the 'meanline' parameter, and setting it to True. 
+
+```{python}
+plt.boxplot(df["gpa"],showmeans=True, meanline=True)
+plt.show()
+```
+
+Once, again, like with the histograms, we can change whether we want to view these vertically or horizontally. 
+
+```{python}
+plt.boxplot(df["gpa"],vert=False)
+plt.show()
+```
+
+Now we can really begin manipulating how our graph looks by using the 'boxprops', 'whiskerprops', 'capprops', 'flierprops', 'mediansprops', 'meanprops', and 'patch_artist' parameters. Something to note about all these parameters is that they are dictionaries that have multiple parameters within. For most of these those parameters are 'color', 'linewidth', and 'linestyle,' but I will show the specifics as we move along.  
+
+First, boxprops. This parameter controls the features relating to the main rectangle than encases Q1 through Q3. It contains 'linewidth' and 'linestyle' from earlier, alongside 'edgecolor' and 'facecolor'. These control the color of the lines around the rectangle and the color of the rectangle respectively. 
+
+However, 'facecolor' and 'linestyle' are mutually exclusive parameters. This is because 'facecolor' will only work if a second parameter, 'patch_artist,' is set to true. When patch_artist is false, then the boxplots are empty of any color, and you can specify 'linestyle' as you desire.
+
+(Also, it's important to note that if you decide you only want to color the lines and choose not fill in the plot, then you would simply call the parameter 'color' instead of 'edgecolor,' since now there is nothing to differentiate.)
+
+These color parameters can be changed the exact same way as the color parameter was changed with the histograms. 'linewidth' is 1 by default, and we can set it to any float to make it thinner or thicker. 
+
+To break up all this text, here is a graph showing you the code to create a boxplot that is filled in with some blue color.
+
+```{python}
+plt.boxplot(df["gpa"],patch_artist=True, boxprops=dict(facecolor="lightblue", edgecolor="blue", linewidth=2)) 
+plt.show()
+```
+
+Finally, 'linestyle' gives you several options to choose from for the design of your line.
+* '-' → solid 
+* '--' → dashed
+* '-.' → dash-dot
+* ':' → dotted
+* 'None' or '' → no line
+
+Here is an example of every kind of line style. Since there are 5 styles, I will show them with a subplot of 1 row and 5 lines.
+
+(patch_artist is False by default, so we can simply delete rather than manually setting it to False.)
+
+```{python}
+fig, axes = plt.subplots(1, 5)
+
+axes[0].boxplot(df["gpa"], boxprops=dict(color="red", linewidth=4, linestyle = "-")) 
+axes[0].set_title("Solid Line")
+axes[1].boxplot(df["gpa"], boxprops=dict(color="red", linewidth=4, linestyle = "--")) 
+axes[1].set_title("Dashed Line")
+axes[2].boxplot(df["gpa"], boxprops=dict(color="red", linewidth=4, linestyle = "-.")) 
+axes[2].set_title("Dash-Dot Line")
+axes[3].boxplot(df["gpa"], boxprops=dict(color="red", linewidth=4, linestyle = ":")) 
+axes[3].set_title("Dotted Line")
+axes[4].boxplot(df["gpa"], boxprops=dict(color="red", linewidth=4, linestyle = "")) 
+axes[4].set_title("No Line")
+
+plt.suptitle("Line Styles")
+plt.tight_layout()
+plt.show()
+```
+
+Next, we will move on to the 'whiskerprops' parameters for the whisker properties. This parameter has the usual subparameters of 'color,' 'linestyle,' and 'linewidth,' each of which have already been previously explained
+
+```{python}
+plt.boxplot(df["gpa"], whiskerprops = dict(color="green", linestyle=":", linewidth=1))
+plt.show()
+```
+
+Next, we will move on to 'capprops.' This parameter controls the caps on the end of each whisker. Once again, it has the usual subparameters of 'color,' 'linestyle,' and 'linewidth.'
+
+```{python}
+plt.boxplot(df["gpa"], capprops = dict(color="orange", linestyle="-", linewidth=3))
+plt.show()
+```
+
+Next on the list is 'flierprops.' This controls what the outliers on your graph look like. Unlike the other parameters, this one has the unique subparameters of 'marker', 'markerfacecolor,' 'markeredgecolor,' and 'markersize.' 
+
+Firstly, 'marker' specifies the shape of the marker. The options for this are:
+* 'o'	circle
+* 's'	square
+* 'D'	diamond
+* '^'	triangle up
+* 'v'	triangle down
+* '<'	triangle left
+* '>'	triangle right
+* 'x'	X
+* '+'	plus
+* '*'	star
+* 'p'	pentagon
+* 'h'	hexagon
+* '.'	point (very small)
+
+'markerfacecolor' and 'markeredgecolor' are the fill color and edge color of the marker respectively. They are simply specified by a string as with previous color parameters.
+
+Finally 'markersize' is an int corresponding to the size you wish the outlier to be. 
+
+Putting it all together creates a graph like this. 
+
+```{python}
+plt.boxplot(df["gpa"], flierprops = dict(marker = '*', markerfacecolor='pink', markeredgecolor='red', markersize=3))
+plt.show()
+```
+
+Next is 'medianprops.' This parameter controls the look of the median line in the graph. It has the usual subparameters of 'color,' 'linestyle,' and 'linewidth.'
+
+```{python}
+plt.boxplot(df["gpa"], medianprops = dict(color="lightgreen", linestyle="-.", linewidth=.75))
+plt.show()
+```
+
+Finally we end with the parameter 'meanprops.' This controls the look of the mean marker/line, (if it was added). It is similar to flierprops and has the same parameters of 'marker', 'markerfacecolor,' 'markeredgecolor,' and 'markersize.' These are used exactly as before. 
+
+I will demonstrate how it looks with both a marker and a line. 
+
+```{python}
+plt.boxplot(df["gpa"], showmeans = True, meanprops = dict(marker = 'D', markerfacecolor='yellow', markeredgecolor='cyan', markersize=6))
+plt.show()
+```
+
+```{python}
+plt.boxplot(df["gpa"], showmeans = True, meanline = True, meanprops = dict(marker = 'X', markerfacecolor='magenta', markeredgecolor='skyblue', markersize=10))
+plt.show()
+```
+
+As you can see, when you turn the mean into a line, when you specify 'meanprops,' it applies these properties to two markers that it creates on either end of the line.
+
+Finally, lets try applying these to two datasets in one boxplot. If you try modifying both boxplots in one line, you will find that it doesn't work. This is a time where we need to actually create two separate boxplots and then put them on the same graph. We will make sure they don't land on top of each other by using the actual final parameter for this section, 'position.'
+
+You can specify the position of a certain plot with an integer, so long as no position is the same for two graphs, they will line up neatly and not on top of each other.
+
+```{python}
+plt.boxplot(df["gpa"],showmeans = True,meanline=False, meanprops = dict(marker = 'D', markerfacecolor='cyan', markeredgecolor='blue', markersize=8), patch_artist=True, boxprops=dict(facecolor="lightblue", edgecolor="blue", linewidth=.5), medianprops = dict(color="orange", linestyle="-", linewidth=2),flierprops = dict(marker = 's', markerfacecolor='lightblue', markeredgecolor='blue', markersize=6), capprops = dict(color="yellow", linestyle="--", linewidth=5),positions=[1])
+
+plt.boxplot(more_data,showmeans = True,meanline=False, meanprops = dict(marker = 'D', markerfacecolor='cyan', markeredgecolor='blue', markersize=8), patch_artist=True, boxprops=dict(facecolor="pink", edgecolor="red", linewidth=.5), medianprops = dict(color="green", linestyle="-", linewidth=2),flierprops = dict(marker = 's', markerfacecolor='pink', markeredgecolor='red', markersize=6), capprops = dict(color="lightgreen", linestyle="--", linewidth=5),positions=[2])
+
+plt.show()
+```
+
+Now that we have seen all the options for changing the visuals of a single boxplot, lets add it all together in one boxplot and see what it looks like. 
+
+(We will also be including some of our universal matplotlib functions.)
+
+```{python}
+plt.boxplot(df["gpa"],label=["Morning Class"],showmeans = True,meanline=False, meanprops = dict(marker = 'D', markerfacecolor='cyan', markeredgecolor='blue', markersize=8), patch_artist=True, boxprops=dict(facecolor="lightblue", edgecolor="blue", linewidth=.5), medianprops = dict(color="orange", linestyle="-", linewidth=2),flierprops = dict(marker = 's', markerfacecolor='lightblue', markeredgecolor='blue', markersize=6), capprops = dict(color="yellow", linestyle="--", linewidth=5),positions=[1])
+plt.boxplot(more_data,label=["Evening Class"],showmeans = True,meanline=False, meanprops = dict(marker = 'D', markerfacecolor='cyan', markeredgecolor='blue', markersize=8), patch_artist=True, boxprops=dict(facecolor="pink", edgecolor="red", linewidth=.5), medianprops = dict(color="green", linestyle="-", linewidth=2),flierprops = dict(marker = 's', markerfacecolor='pink', markeredgecolor='red', markersize=6), capprops = dict(color="lightgreen", linestyle="--", linewidth=5),positions=[2])
+plt.legend()
+plt.xlabel("The Class")
+plt.ylabel("GPA")
+plt.title("Grades for each Class")
+plt.text(0.95, 0.95, "These are the best and worst classes", ha="right", va="top", transform=plt.gca().transAxes)
+plt.grid(True)
+plt.show()
+```
+
+This covers the all the basics that you should need for creating boxplots. Next, we work with density graphs. 
+
+### Density
+
+## Relationship Graphs (2D Graphs)
+
+So far, we’ve looked at visualizations that focus on one variable at a time. These are great for showing distributions, but often in data science, what we care about is the relationship between two variables.
+
+In this section, we’ll cover how to use matplotlib to show relationships between pairs of features in our dataset.
+
+The first type of plot we’ll cover is the scatter plot.
+
+### Scatterplot
+
+### Lineplot
+
+### Barplot 
+
+# Conclusion
