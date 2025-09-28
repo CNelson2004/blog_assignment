@@ -775,4 +775,5 @@ Remember, a critical step in understanding data, is actually being able to see t
 -Cassandra
 
 A special thanks to the people who developed matplotlib! Without them, this kind of easy visualization wouldn't be possible.
-![matplotlib logo](matplotlib_log.jpg)
+
+![matplotlib logo](matplotlib_logo.jpg)
