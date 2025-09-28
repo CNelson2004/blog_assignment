@@ -773,3 +773,6 @@ Remember, a critical step in understanding data, is actually being able to see t
 (Plans are in the works for a blog post are visualizing the relationship between features, so keep an eye out for that!)
 
 -Cassandra
+
+A special thanks to the people who developed matplotlib! Without them, this kind of easy visualization wouldn't be possible.
+![matplotlib logo](matplotlib_log.jpg)
