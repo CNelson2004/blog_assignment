@@ -5,6 +5,8 @@ format: html
 ---
 
 ## Introduction
+When working with data you can only get so far with the raw numbers alone. It's difficult to perform any introductory analysis when you can't see what data you are working with, and if you can't see the data you can't understand it. 
+
 Data visualization transforms raw numbers into meaningful insights that drive better decision-making. In this comprehensive tutorial, you'll master the essential skills of creating clear, informative visualizations using pandas and matplotlib.
 
 We'll start by creating a dataset in pandas. Then we'll explore three fundamental distribution plots: histograms, boxplots, and density plots alongside matplotlib's universal functions that enhance any plt. Each section builds upon the previous one, progressing from basic plot creation to advanced customization techniques that will make your visualizations both professional and impactful.
@@ -764,9 +766,10 @@ If you are even more interested in plotting and want to go further, then I recom
 
 Additionally, if you want to use some real datasets from off the internet, rather than simply creating your own data to work with, then I recommend using Zenodo. They offer thousands of open source datasets that you can download and use to further your visualization skills. You can find some datasets from them here: [Zenodo_datasets](https://zenodo.org/search?q=&f=access_status%3Aopen&f=resource_type%3Adataset&l=list&p=1&s=10&sort=newest)
 
-In fact, I highly recommend finding a dataset that you like and believe you can model, and using some of the plots that we have described here to visualize that data and better understand it. 
+Now, with these tools at hand, go forth, obtain or create a dataset of your own, and create graphs to better understand the data!
 
 Remember, a critical step in understanding data, is actually being able to see the data. Have fun visualizing!
 
 (Plans are in the works for a blog post are visualizing the relationship between features, so keep an eye out for that!)
+
 -Cassandra
