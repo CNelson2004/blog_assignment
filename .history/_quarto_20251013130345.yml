@@ -11,8 +11,8 @@ website:
     left:
       - text: "Home"
         href: index.md
-      - text: "About Me"
-        href: about.md
+      - text: ""
+      
       - text: "Data Visualization"
         href: blog.qmd
       - text: "Data Visualization-2"
