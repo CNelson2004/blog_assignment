@@ -138,6 +138,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="./blog.html" aria-current="page"> 
 <span class="menu-text">Data Visualization</span></a>
   </li>  
@@ -228,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We begin by importing our essential libraries. those being pandas for data manipulation and matplotlib for creating visualizations.</p>
 <!-- 
 
-::: {#cc2f7f3f .cell execution_count=1}
+::: {#2ae280b2 .cell execution_count=1}
 ``` {.python .cell-code}
 !pip install pandas
 !pip install matplotlib
@@ -265,13 +269,13 @@ Requirement already satisfied: numpy<2.6,>=1.25.2 in c:\users\cnels\appdata\loca
 
 
  -->
-<div id="e427fedb" class="cell" data-execution_count="2">
+<div id="e934e342" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we’ll design our dataset structure by deciding on the number of features (which will become our columns). For this example, our dataset will have 4 features: name, gpa, major, and year. We’ll also determine the size of our dataset, which in this case will be 10. Ten entries will provide enough data to demonstrate various visualization techniques without overwhelming complexity.</p>
 <p>To create this dataset programmatically, we’ll first construct 4 lists containing 10 items each.</p>
-<div id="338f7f42" class="cell" data-execution_count="3">
+<div id="d091dcb7" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>, <span class="st">"Diana"</span>, <span class="st">"Ethan"</span>, <span class="st">"Fiona"</span>, <span class="st">"George"</span>, <span class="st">"Hannah"</span>, <span class="st">"Isaac"</span>, <span class="st">"Julia"</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gpa <span class="op">=</span> [<span class="fl">3.5</span>, <span class="fl">2.8</span>, <span class="fl">3.9</span>, <span class="fl">3.2</span>, <span class="fl">2.5</span>, <span class="fl">1.4</span>, <span class="fl">2.9</span>, <span class="fl">3.8</span>, <span class="fl">2.2</span>, <span class="fl">3.6</span>]  </span>
@@ -281,7 +285,7 @@ Requirement already satisfied: numpy<2.6,>=1.25.2 in c:\users\cnels\appdata\loca
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>year <span class="op">=</span> [<span class="st">"Freshman"</span>, <span class="st">"Sophomore"</span>, <span class="st">"Junior"</span>, <span class="st">"Senior"</span>, <span class="st">"Freshman"</span>, <span class="st">"Sophomore"</span>, <span class="st">"Junior"</span>, <span class="st">"Senior"</span>, <span class="st">"Freshman"</span>, <span class="st">"Sophomore"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that we have our feature data prepared, we’ll combine them into a pandas DataFrame using a dictionary structure. The <code>pd.DataFrame()</code> constructor accepts a dictionary where keys become column names and values become the column data, providing the structured format necessary for effective data analysis and visualization.</p>
-<div id="9397f5ce" class="cell" data-execution_count="4">
+<div id="c54665f3" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span>: name, </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gpa"</span>: gpa, </span>
@@ -297,7 +301,7 @@ Requirement already satisfied: numpy<2.6,>=1.25.2 in c:\users\cnels\appdata\loca
 <p>Before creating visualizations, it’s crucial to understand your data’s structure and contents. Pandas provides several powerful methods for data exploration and inspection, each serving different analytical needs.</p>
 <p>The <code>.head()</code> method accepts an optional integer parameter (default value is 5) and displays that number of rows of your dataset. This function provides a quick preview of your data’s structure and content, helping you verify that your data loaded correctly and understand the format of each column.</p>
 <p>(This isn’t particularly helpful when we have created our own dataset by hand, but if you download a dataset, or simply create a much larger one that has more randomness to it, then this is still useful to ensure it is all correctly formatted.)</p>
-<div id="b06834e9" class="cell" data-execution_count="5">
+<div id="3814f805" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
@@ -356,7 +360,7 @@ Requirement already satisfied: numpy<2.6,>=1.25.2 in c:\users\cnels\appdata\loca
 </div>
 </div>
 <p>To view the entire dataset, you can use the <code>print()</code> function, which displays all rows and columns. This approach is particularly useful for smaller datasets where you want to see every data point. However, it isn’t really viable for larger datasets, which is why you would use <code>.head()</code>.</p>
-<div id="843973f9" class="cell" data-execution_count="6">
+<div id="ee0f6de6" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      name  gpa             major       year
@@ -373,7 +377,7 @@ Requirement already satisfied: numpy<2.6,>=1.25.2 in c:\users\cnels\appdata\loca
 </div>
 </div>
 <p>For examining specific features, you can access individual columns by using bracket notation with the column name as a string. This operation returns a pandas Series containing all values from that column, making it easy to focus on particular variables.</p>
-<div id="7348726f" class="cell" data-execution_count="7">
+<div id="2d739bc7" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>0    3.5
@@ -391,7 +395,7 @@ Name: gpa, dtype: float64</code></pre>
 </div>
 <p>The <code>.loc</code> function provides another method of obtaining columns by using label-based indexing. It accepts row and column specifications separated by a comma, where the first parameter specifies rows and the second specifies columns.</p>
 <p>Using <code>:</code> (which you may be familiar with from Python) selects all rows, while providing a list of string column names selects specific columns. This method is particularly good for looking at multiple columns simultaneously.</p>
-<div id="2765f1fe" class="cell" data-execution_count="8">
+<div id="ab430820" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.loc[:, [<span class="st">"name"</span>, <span class="st">"gpa"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
@@ -463,7 +467,7 @@ Name: gpa, dtype: float64</code></pre>
 </div>
 </div>
 <p>The <code>.iloc</code> function performs integer-location based selection, allowing you to access rows by their numerical index position. It accepts integer values corresponding to row positions (starting from 0), making it ideal for retrieving specific rows.</p>
-<div id="01112e0c" class="cell" data-execution_count="9">
+<div id="0775117c" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>name        Alice
@@ -474,7 +478,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>For conditional data selection, you can combine boolean indexing with <code>.loc</code>. This approach filters rows based on specific criteria. For example, you can find all rows where a particular column equals a certain value, as demonstrated below.</p>
-<div id="50f30fed" class="cell" data-execution_count="10">
+<div id="dac6a31c" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.loc[df[<span class="st">"name"</span>] <span class="op">==</span> <span class="st">"Alice"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
@@ -515,7 +519,7 @@ Name: 0, dtype: object</code></pre>
 <p>The first visualization we’ll explore is a histogram, which displays the frequency distribution of our data by dividing it into bins. For this example, we’ll examine the distribution of GPA values from our dataset.</p>
 <p>We create histograms using <code>plt.hist()</code>, which automatically counts how many data points fall into each range and displays them as bars. To plot only the GPA values, we’ll extract all the information from the gpa column.</p>
 <p>An essential aspect of using matplotlib is that you should always use the <code>.show()</code> function after creating a graph. Without it, you’ll see unwanted return text that clutters your visualization. Allow me demonstrate the difference.</p>
-<div id="af4eb64c" class="cell" data-execution_count="11">
+<div id="6c6fc907" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>(array([1., 0., 0., 1., 1., 1., 1., 1., 2., 2.]),
@@ -530,7 +534,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="82ad3bca" class="cell" data-execution_count="12">
+<div id="3cffdfbc" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>])</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -544,7 +548,7 @@ Name: 0, dtype: object</code></pre>
 <p>You may notice that even the clean version above doesn’t look optimal, the x-axis ranges from 1.4 to 3.9. This happens because we haven’t specified the optional <code>bins</code> and <code>range</code> parameters.</p>
 <p>The <code>bins</code> parameter accepts an integer and determines how many equal-width intervals your data is divided into. If not specified, matplotlib automatically creates 10 evenly spaced bins. The <code>range</code> parameter accepts a tuple of two float values (min, max) and sets the boundaries for your histogram. If not specified, it uses the natural minimum and maximum of your data.</p>
 <p>However, since we know that GPAs typically range from 0.0 to 4.0, we can adjust our visualization accordingly.</p>
-<div id="ce3ef987" class="cell" data-execution_count="13">
+<div id="bd7b98f4" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>))</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -556,7 +560,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>Now that our data is more accurately represented within the proper GPA scale, let’s explore how different numbers of bins affect the visualization.</p>
-<div id="7f1e649b" class="cell" data-execution_count="14">
+<div id="57b06a89" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">4</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -567,7 +571,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="3e6b3f03" class="cell" data-execution_count="15">
+<div id="d4d9804a" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -579,7 +583,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>These aren’t the only customization options for histograms. The <code>orientation</code> parameter accepts string values and controls whether bars are displayed vertically or horizontally, with the graph defaulting to vertical.</p>
-<div id="c709187c" class="cell" data-execution_count="16">
+<div id="80c43b9e" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, orientation <span class="op">=</span> <span class="st">"horizontal"</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -591,7 +595,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>Currently, the y-axis shows the count of values falling into each bin. We can change this to display the probability density by setting the <code>density</code> parameter, which accepts a boolean value. When set to <code>True</code>, the histogram shows the relative frequency rather than absolute counts.</p>
-<div id="5bf7f05f" class="cell" data-execution_count="17">
+<div id="0e29deb1" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, density <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -604,7 +608,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 <p>At first glance, this might seem incorrect since the heights don’t appear to sum to 1. This is because you need to consider both the height and width of each bin. Since each bin is 0.5 units wide, multiplying each bin’s height by 0.5 and summing them gives us 1. Each bin’s area represents the percentage of data within that range.</p>
 <p>The <code>histtype</code> parameter accepts string values and specifies the visual style of your histogram bars. There are four options: <code>"bar"</code> (default solid bars), <code>"step"</code> (unfilled outlines), <code>"stepfilled"</code> (filled step plots), and <code>"barstacked"</code> (for multiple datasets). Allow me to show you each.</p>
-<div id="677a226a" class="cell" data-execution_count="18">
+<div id="fd49a88e" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"step"</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -615,7 +619,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="2f2097dc" class="cell" data-execution_count="19">
+<div id="83bd9afd" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"stepfilled"</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -626,7 +630,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="c08bc695" class="cell" data-execution_count="20">
+<div id="6a08751a" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"bar"</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -638,7 +642,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>At first <code>"bar"</code> and <code>"stepfilled"</code> might appear exactly the same. However, the difference becomes more apparent when we add edge lines using the <code>edgecolor</code> parameter, which accepts any valid matplotlib color string.</p>
-<div id="d5d649b9" class="cell" data-execution_count="21">
+<div id="524c1d21" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"stepfilled"</span>, edgecolor <span class="op">=</span> <span class="st">"black"</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -649,7 +653,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="69857bef" class="cell" data-execution_count="22">
+<div id="54b8f7c1" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"bar"</span>, edgecolor <span class="op">=</span> <span class="st">"black"</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -661,11 +665,11 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>The <code>"barstacked"</code> option is designed for comparing multiple datasets by stacking their bars. To demonstrate this properly, we need additional data. Since we’re focusing on a single feature, we’ll create a simple pandas Series.</p>
-<div id="79ba72f4" class="cell" data-execution_count="23">
+<div id="5a41ea24" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>more_data <span class="op">=</span> pd.Series([<span class="fl">2.3</span>, <span class="fl">3.8</span>, <span class="fl">1.4</span>, <span class="fl">2.9</span>, <span class="fl">3.5</span>, <span class="fl">1.8</span>, <span class="fl">2.1</span>, <span class="fl">3.0</span>, <span class="fl">1.2</span>, <span class="fl">0.9</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now we can properly demonstrate the barstacked histogram.</p>
-<div id="ccbdec25" class="cell" data-execution_count="24">
+<div id="33215b73" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.hist([df[<span class="st">"gpa"</span>], more_data], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"barstacked"</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -677,7 +681,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>The <code>rwidth</code> parameter accepts a float value between 0 and 1 and controls the relative width of the bars. The default value of 1 makes bars touch each other, while smaller values create spacing between bars.</p>
-<div id="bef42b74" class="cell" data-execution_count="25">
+<div id="67983da7" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"bar"</span>, rwidth <span class="op">=</span> <span class="fl">0.9</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -688,7 +692,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="5dd9d761" class="cell" data-execution_count="26">
+<div id="bd5dbcb3" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"bar"</span>, rwidth <span class="op">=</span> <span class="fl">0.5</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -700,7 +704,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>When using narrower bars, you might want to adjust their position within each bin using the <code>align</code> parameter, which accepts string values. The options are <code>"mid"</code> (center-aligned) [and the default], <code>"left"</code> (left-aligned), and <code>"right"</code> (right-aligned).</p>
-<div id="9f92f11b" class="cell" data-execution_count="27">
+<div id="c8bd64a4" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"bar"</span>, rwidth <span class="op">=</span> <span class="fl">0.5</span>, align <span class="op">=</span> <span class="st">"left"</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -711,7 +715,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="932ea18b" class="cell" data-execution_count="28">
+<div id="ca47f4e0" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"bar"</span>, rwidth <span class="op">=</span> <span class="fl">0.5</span>, align <span class="op">=</span> <span class="st">"right"</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -723,7 +727,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>The <code>color</code> parameter accepts any valid color string and allows you to customize the appearance of your histogram bars.</p>
-<div id="f27ff92e" class="cell" data-execution_count="29">
+<div id="606006be" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"bar"</span>, rwidth <span class="op">=</span> <span class="fl">0.9</span>, color <span class="op">=</span> <span class="st">"green"</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -735,7 +739,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>For multiple datasets, you can specify different colors by providing a list of color strings that corresponds to your list of datasets.</p>
-<div id="2fcf3c40" class="cell" data-execution_count="30">
+<div id="c8691187" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plt.hist([df[<span class="st">"gpa"</span>], more_data], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"barstacked"</span>, color <span class="op">=</span> [<span class="st">"purple"</span>, <span class="st">"pink"</span>])</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -747,7 +751,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>To distinguish between different datasets clearly, use the <code>label</code> parameter, which accepts a list of string values. However, labels require an additional step, that being you must call <code>plt.legend()</code> to display the labels properly on your graph.</p>
-<div id="714c6a9a" class="cell" data-execution_count="31">
+<div id="64dd27a3" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>plt.hist([df[<span class="st">"gpa"</span>], more_data], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, histtype <span class="op">=</span> <span class="st">"barstacked"</span>, color <span class="op">=</span> [<span class="st">"purple"</span>, <span class="st">"pink"</span>], label <span class="op">=</span> [<span class="st">"Morning Class"</span>, <span class="st">"Evening Class"</span>])</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -765,7 +769,7 @@ Name: 0, dtype: object</code></pre>
 <h3 class="anchored" data-anchor-id="universal-matplotlib-functions">Universal Matplotlib Functions</h3>
 <p>Before diving into specific plot types, it’s essential to understand matplotlib’s universal functions that enhance any visualization. These are functions that work consistently across all graph types.</p>
 <p>The <code>plt.xlabel()</code> and <code>plt.ylabel()</code> functions accept string values and add descriptive labels to your axes. These labels should clearly indicate the units of measurement and what each axis represents.</p>
-<div id="9c400d70" class="cell" data-execution_count="32">
+<div id="61641fd4" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"GPA"</span>)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span>
@@ -779,7 +783,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>The <code>plt.title()</code> function accepts a string value and creates an overall title for your visualization.</p>
-<div id="2a14033d" class="cell" data-execution_count="33">
+<div id="7b824fe6" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Grades"</span>)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -793,7 +797,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 <p>The <code>plt.grid()</code> function accepts a boolean value and adds grid lines to your plot when set to <code>True</code>. While not essential for simple visualizations, grid lines can significantly improve readability for larger datasets or more complex plots.</p>
 <p>Additionally, we can specificy an <code>alpha</code> parameter to determine how transparent our graph lines are.</p>
-<div id="9444fbb0" class="cell" data-execution_count="34">
+<div id="bf09b6f5" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -805,7 +809,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="dcf5a0c9" class="cell" data-execution_count="35">
+<div id="ccf3a289" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>)</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha <span class="op">=</span><span class="fl">.5</span>)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -818,7 +822,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>The <code>plt.text()</code> function provides the ability to add notes directly onto your graph. It accepts several essential parameters: x-coordinate (float), y-coordinate (float), and the text string.</p>
-<div id="0283fbbe" class="cell" data-execution_count="36">
+<div id="c597d370" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="fl">.1</span>, <span class="dv">4</span>, <span class="st">"These are the best and worst classes"</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -832,7 +836,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 <p>For more convenient and consistent text positioning, you can use relative coordinates by setting the <code>transform</code> parameter to <code>plt.gca().transAxes</code>. <code>gca</code> stands for “get current axes,” and does exactly this. <code>transAxes</code> changes the units returned by <code>.gac()</code> from direct units into axis relative units, which range on a scale from 0.0 to 1.0.</p>
 <p>Using this parameter with this input allows you to position text using normalized values between 0 and 1, where (0,0) represents the bottom-left corner and (1,1) represents the top-right corner, regardless of your data’s actual scale. In our case, we will put it in the top right corner.</p>
-<div id="b05ab0c4" class="cell" data-execution_count="37">
+<div id="2c62746d" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="st">"This is the best class"</span>, transform <span class="op">=</span> plt.gca().transAxes)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -846,7 +850,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 <p>However, you may notice that it isn’t staying in the corner of our graph. It is actually going outside the graph. To keep our text inside our graph we need to specify a few more variables. Those being, <code>va</code> and <code>ha</code>.</p>
 <p>The <code>ha</code> (horizontal alignment) and <code>va</code> (vertical alignment) parameters accept string values and provide precise control over text positioning relative to the coordinates. The horizontal alignment parameter accepts <code>"left"</code>, <code>"center"</code>, and <code>"right"</code> values, while vertical alignment accepts <code>"bottom"</code>, <code>"center"</code>, and <code>"top"</code> values. These parameters ensure your text doesn’t extend beyond plot boundaries.</p>
-<div id="a1c77e87" class="cell" data-execution_count="38">
+<div id="d73310e4" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="fl">0.95</span>, <span class="fl">0.95</span>, <span class="st">"This is the best class"</span>, ha <span class="op">=</span> <span class="st">"right"</span>, va <span class="op">=</span> <span class="st">"top"</span>, transform <span class="op">=</span> plt.gca().transAxes)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -859,7 +863,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>The <code>plt.subplots()</code> function enables you to create multiple plots within a single figure, accepting integer values for the number of rows and columns you desire. This function returns both a figure object and an axes array that you can use to place individual plots in an organized layout. A blank one is shown below.</p>
-<div id="b323732d" class="cell" data-execution_count="39">
+<div id="de60e216" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -870,7 +874,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>You access individual subplot positions through indexing by array, where <code>axes[row, column]</code> specifies the exact location for each plot. For our example here, we will use the same plot and simply change the color of each.</p>
-<div id="2e5a2308" class="cell" data-execution_count="40">
+<div id="83e3f3da" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, color <span class="op">=</span> <span class="st">"lightblue"</span>)</span>
@@ -890,7 +894,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>To enhance your subplots, use the <code>.set_title()</code> method, which accepts a string value, for individual subplot titles. You can also use <code>plt.suptitle()</code>, also accepting a string, for an overarching title that covers the entire figure. Additionally, the <code>plt.tight_layout()</code> function automatically adjusts spacing between subplots to ensure our plots don’t overlap.</p>
-<div id="7f86e2b5" class="cell" data-execution_count="41">
+<div id="438a3afc" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, color <span class="op">=</span> <span class="st">"blue"</span>)</span>
@@ -918,7 +922,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>The <code>figsize</code> parameter accepts a tuple of two float values (width, height), measured in inches, and controls the overall dimensions of your figure. Experimenting with different sizes helps you find the optimal display format for your specific visualization needs. I will show you a few different size below, specifically (12,8), (10,6), and (8,4).</p>
-<div id="d0e9a78a" class="cell" data-execution_count="42">
+<div id="c7c85c41" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>, figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">8</span>))</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].hist(df[<span class="st">"gpa"</span>], <span class="bu">range</span> <span class="op">=</span> (<span class="fl">0.0</span>, <span class="fl">4.0</span>), bins <span class="op">=</span> <span class="dv">8</span>, color <span class="op">=</span> <span class="st">"blue"</span>)</span>
@@ -1002,7 +1006,7 @@ Name: 0, dtype: object</code></pre>
 <section id="boxplot" class="level3">
 <h3 class="anchored" data-anchor-id="boxplot">Boxplot</h3>
 <p>Boxplots provide a statistical summary of your data’s distribution, showing the median, quartiles, and potential outliers in a compact visual format. Creating a boxplot is straightforward using <code>plt.boxplot()</code>, and like histograms, you can display data from one or multiple datasets.</p>
-<div id="515a823a" class="cell" data-execution_count="43">
+<div id="93ccae3e" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>])</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1013,7 +1017,7 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="87dc07dc" class="cell" data-execution_count="44">
+<div id="6247442c" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot([df[<span class="st">"gpa"</span>], more_data])</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1025,15 +1029,19 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 <p>The <code>labels</code> parameter accepts a list of string values and helps differentiate multiple datasets in your boxplot, just like we did with histograms.</p>
-<div id="66b35191" class="cell" data-execution_count="45">
+<div id="3dd0fe80" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot([df[<span class="st">"gpa"</span>], more_data], labels <span class="op">=</span> [<span class="st">"Class A"</span>, <span class="st">"Class B"</span>])</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:1: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
-  plt.boxplot([df["gpa"], more_data], labels = ["Class A", "Class B"])
-C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-  plt.legend()</code></pre>
+<pre><code>C:\Users\cnels\AppData\Local\Temp\ipykernel_20912\1134656318.py:1: MatplotlibDeprecationWarning:
+
+The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+
+C:\Users\cnels\AppData\Local\Temp\ipykernel_20912\1134656318.py:2: UserWarning:
+
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1044,7 +1052,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>The <code>showmeans</code> parameter accepts a boolean value and, when set to <code>True</code>, adds a marker indicating the mean value.</p>
-<div id="fba0c134" class="cell" data-execution_count="46">
+<div id="fd9ebcc5" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], showmeans <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1056,7 +1064,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>The <code>meanline</code> parameter accepts a boolean value and changes how the mean is displayed. When set to <code>True</code>, it shows the mean as a line across the box rather than a point marker.</p>
-<div id="eded83d6" class="cell" data-execution_count="47">
+<div id="1b8261e8" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], showmeans <span class="op">=</span> <span class="va">True</span>, meanline <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1068,7 +1076,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>The <code>vert</code> parameter accepts a boolean value and controls the orientation of your boxplot. Setting it to <code>False</code> creates horizontal boxplots instead of the default vertical ones.</p>
-<div id="1fbcf82e" class="cell" data-execution_count="48">
+<div id="0da0412f" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], vert <span class="op">=</span> <span class="va">False</span>)</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1082,7 +1090,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 <p>Boxplots offer extensive customization through several property parameters that accept dictionaries containing styling options. The most common properties in these parameters include <code>color</code>, which we’ve already covered, <code>linewidth</code>, which takes float values for line thickness, (and defaults to 1), and <code>linestyle</code>, which accepts string values for line patterns.</p>
 <p>The <code>boxprops</code> parameter controls the appearance of the main rectangular box that encompasses the first quartile through the third quartile. It accepts a dictionary of properties. Those being, <code>linewidth</code>, <code>linestyle</code>, <code>edgecolor</code>, and <code>facecolor</code>. Unlike most parameters, this one requires a separate parameter be either activated or deactivated for it to work properly. This parameter being <code>patch_artist</code>. This is because <code>facecolor</code> only works when the <code>patch_artist</code> parameter is set to <code>True</code>, while <code>linestyle</code> only works when <code>patch_artist</code> is set to False.</p>
 <p>First I will show you a plot with <code>facecolor</code> followed by one showing <code>linestyle</code>. (Also, take note that if you are omitting facecolor, then you can simply change <code>edgecolor</code> to <code>color</code>, since now there is no other color to confuse it with.)</p>
-<div id="9ecfa1f6" class="cell" data-execution_count="49">
+<div id="815015bd" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], patch_artist <span class="op">=</span> <span class="va">True</span>, boxprops <span class="op">=</span> <span class="bu">dict</span>(facecolor <span class="op">=</span> <span class="st">"red"</span>, edgecolor<span class="op">=</span> <span class="st">"pink"</span>, linewidth <span class="op">=</span> <span class="dv">2</span>)) </span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1093,7 +1101,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 </div>
-<div id="0caf88e6" class="cell" data-execution_count="50">
+<div id="e311e05d" class="cell" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], patch_artist <span class="op">=</span> <span class="va">False</span>, boxprops <span class="op">=</span> <span class="bu">dict</span>(color <span class="op">=</span> <span class="st">"red"</span>, linestyle <span class="op">=</span> <span class="st">"--"</span>, linewidth <span class="op">=</span> <span class="dv">2</span>)) </span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1113,7 +1121,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 <li><code>"None"</code> or <code>""</code> → no line</li>
 </ul>
 <p>Here’s an example demonstrating different line styles.</p>
-<div id="a72a26ab" class="cell" data-execution_count="51">
+<div id="2b91d971" class="cell" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">5</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].boxplot(df[<span class="st">"gpa"</span>], boxprops <span class="op">=</span> <span class="bu">dict</span>(color <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="dv">4</span>, linestyle <span class="op">=</span> <span class="st">"-"</span>)) </span>
@@ -1139,7 +1147,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>The <code>whiskerprops</code> parameter controls the appearance of the whiskers. It accepts a dictionary with the standard properties of <code>color</code>, <code>linestyle</code>, and <code>linewidth</code>.</p>
-<div id="a4cafedd" class="cell" data-execution_count="52">
+<div id="33440f62" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], whiskerprops <span class="op">=</span> <span class="bu">dict</span>(color <span class="op">=</span> <span class="st">"green"</span>, linestyle <span class="op">=</span> <span class="st">":"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>))</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1151,7 +1159,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>The <code>capprops</code> parameter controls the caps at the end of each whisker. It also accepts a dictionary with <code>color</code>, <code>linestyle</code>, and <code>linewidth</code> properties.</p>
-<div id="efe4e73c" class="cell" data-execution_count="53">
+<div id="65c1b77d" class="cell" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], capprops <span class="op">=</span> <span class="bu">dict</span>(color <span class="op">=</span> <span class="st">"orange"</span>, linestyle <span class="op">=</span> <span class="st">"-"</span>, linewidth <span class="op">=</span> <span class="dv">3</span>))</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1179,7 +1187,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 <li><code>"."</code> → point (very small)</li>
 </ul>
 <p>Additional properties include <code>markerfacecolor</code> and <code>markeredgecolor</code> (which accepts color strings for fill and edge), and <code>markersize</code> ( which accepts an integer for size):</p>
-<div id="767a8870" class="cell" data-execution_count="54">
+<div id="accd68e8" class="cell" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], flierprops <span class="op">=</span> <span class="bu">dict</span>(marker <span class="op">=</span> <span class="st">"*"</span>, markerfacecolor <span class="op">=</span> <span class="st">"pink"</span>, markeredgecolor <span class="op">=</span> <span class="st">"red"</span>, markersize <span class="op">=</span> <span class="dv">3</span>))</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1191,7 +1199,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>The <code>medianprops</code> parameter controls the median line appearance within the box, accepting a dictionary with <code>color</code>, <code>linestyle</code>, and <code>linewidth</code> properties.</p>
-<div id="ed66edcc" class="cell" data-execution_count="55">
+<div id="cce57c55" class="cell" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], medianprops <span class="op">=</span> <span class="bu">dict</span>(color <span class="op">=</span> <span class="st">"lightgreen"</span>, linestyle <span class="op">=</span> <span class="st">"-."</span>, linewidth <span class="op">=</span> <span class="fl">.75</span>))</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1203,7 +1211,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>The <code>meanprops</code> parameter customizes the mean marker or line appearance when <code>showmeans</code> is enabled. It accepts a dictionary with the same marker properties as <code>flierprops</code>.</p>
-<div id="a92cf0c2" class="cell" data-execution_count="56">
+<div id="bb6679b0" class="cell" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], showmeans <span class="op">=</span> <span class="va">True</span>, meanprops <span class="op">=</span> <span class="bu">dict</span>(marker <span class="op">=</span> <span class="st">"D"</span>, markerfacecolor <span class="op">=</span> <span class="st">"yellow"</span>, markeredgecolor <span class="op">=</span> <span class="st">"cyan"</span>, markersize <span class="op">=</span> <span class="dv">6</span>))</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1215,7 +1223,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>When using <code>meanline = True</code>, the marker properties apply to markers created at each end of the mean line rather than modifying the line itself.</p>
-<div id="1d445a9e" class="cell" data-execution_count="57">
+<div id="f405fad2" class="cell" data-execution_count="57">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], showmeans <span class="op">=</span> <span class="va">True</span>, meanline <span class="op">=</span> <span class="va">True</span>, meanprops <span class="op">=</span> <span class="bu">dict</span>(marker <span class="op">=</span> <span class="st">"X"</span>, markerfacecolor <span class="op">=</span> <span class="st">"magenta"</span>, markeredgecolor <span class="op">=</span> <span class="st">"skyblue"</span>, markersize <span class="op">=</span> <span class="dv">10</span>))</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1227,7 +1235,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>To create multiple customized boxplots on the same graph, use the <code>positions</code> parameter. This accepts a list of integer values specifying where each boxplot should be placed.</p>
-<div id="23b75b22" class="cell" data-execution_count="58">
+<div id="868eebdf" class="cell" data-execution_count="58">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot(df[<span class="st">"gpa"</span>], showmeans <span class="op">=</span> <span class="va">True</span>, meanline <span class="op">=</span> <span class="va">False</span>, meanprops <span class="op">=</span> <span class="bu">dict</span>(marker <span class="op">=</span> <span class="st">"D"</span>, markerfacecolor <span class="op">=</span> <span class="st">"cyan"</span>, markeredgecolor <span class="op">=</span> <span class="st">"blue"</span>, markersize <span class="op">=</span> <span class="dv">8</span>), patch_artist <span class="op">=</span> <span class="va">True</span>, boxprops <span class="op">=</span> <span class="bu">dict</span>(facecolor <span class="op">=</span> <span class="st">"lightblue"</span>, edgecolor <span class="op">=</span> <span class="st">"blue"</span>, linewidth <span class="op">=</span> <span class="fl">.5</span>), medianprops <span class="op">=</span> <span class="bu">dict</span>(color <span class="op">=</span> <span class="st">"orange"</span>, linestyle <span class="op">=</span> <span class="st">"-"</span>, linewidth <span class="op">=</span> <span class="dv">2</span>), flierprops <span class="op">=</span> <span class="bu">dict</span>(marker <span class="op">=</span> <span class="st">"s"</span>, markerfacecolor <span class="op">=</span> <span class="st">"lightblue"</span>, markeredgecolor <span class="op">=</span> <span class="st">"blue"</span>, markersize <span class="op">=</span> <span class="dv">6</span>), capprops <span class="op">=</span> <span class="bu">dict</span>(color <span class="op">=</span> <span class="st">"yellow"</span>, linestyle <span class="op">=</span> <span class="st">"--"</span>, linewidth <span class="op">=</span> <span class="dv">5</span>), positions <span class="op">=</span> [<span class="dv">1</span>])</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>plt.boxplot(more_data, showmeans <span class="op">=</span> <span class="va">True</span>, meanline <span class="op">=</span> <span class="va">False</span>, meanprops <span class="op">=</span> <span class="bu">dict</span>(marker <span class="op">=</span> <span class="st">"D"</span>, markerfacecolor <span class="op">=</span> <span class="st">"cyan"</span>, markeredgecolor <span class="op">=</span> <span class="st">"blue"</span>, markersize <span class="op">=</span> <span class="dv">8</span>), patch_artist <span class="op">=</span> <span class="va">True</span>, boxprops <span class="op">=</span> <span class="bu">dict</span>(facecolor <span class="op">=</span> <span class="st">"pink"</span>, edgecolor <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">.5</span>), medianprops <span class="op">=</span> <span class="bu">dict</span>(color <span class="op">=</span> <span class="st">"green"</span>, linestyle <span class="op">=</span> <span class="st">"-"</span>, linewidth <span class="op">=</span> <span class="dv">2</span>), flierprops <span class="op">=</span> <span class="bu">dict</span>(marker <span class="op">=</span> <span class="st">"s"</span>, markerfacecolor <span class="op">=</span> <span class="st">"pink"</span>, markeredgecolor <span class="op">=</span> <span class="st">"red"</span>, markersize <span class="op">=</span> <span class="dv">6</span>), capprops <span class="op">=</span> <span class="bu">dict</span>(color <span class="op">=</span> <span class="st">"lightgreen"</span>, linestyle <span class="op">=</span> <span class="st">"--"</span>, linewidth <span class="op">=</span> <span class="dv">5</span>), positions <span class="op">=</span> [<span class="dv">2</span>])</span>
@@ -1247,11 +1255,11 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 <h3 class="anchored" data-anchor-id="density">Density</h3>
 <p>Density plots are another way to visualize the distribution of a single feature. Unlike histograms which show discrete bins, density plots show a smooth curve that represents the probability density of your data. This makes them particularly useful for understanding the shape of your data distribution.</p>
 <p>To create a density plot, we use pandas’ built-in <code>.plot(kind='density')</code> method or <code>.plot.density()</code>, as those are the easiest methods. However, they require importing Scipy. This is a scientific computing and technical computing library that pandas uses in order to make these graphs. You don’t need to know the specifics of how it works for this specific tutorial.</p>
-<div id="652372ba" class="cell" data-execution_count="59">
+<div id="b22c738b" class="cell" data-execution_count="59">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For the following demonstrations, I will be using <code>plot.density()</code>, rather than <code>.plot(kind='density')</code>, simply because I like it more.</p>
-<div id="60a7b18d" class="cell" data-execution_count="60">
+<div id="f7dd610f" class="cell" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density()</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1263,7 +1271,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>We can also change the color of our density plot using the <code>color</code> parameter, just as we have with previous plots.</p>
-<div id="bf9cb43f" class="cell" data-execution_count="61">
+<div id="62dfae79" class="cell" data-execution_count="61">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(color<span class="op">=</span><span class="st">"purple"</span>)</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1277,7 +1285,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 <p>If we want our density plot to be filled in, we don’t have any parameter to set to <code>True</code>, instead we use some special functions from matplotlib.</p>
 <p>First we take the plot we are using and place it into a variable. then, we use <code>.lines[]</code>, which goes to the axis specified in the brackets, followed by <code>.get_xdata()</code> or <code>.get_ydata()</code>. This will give us the area under the curve.</p>
 <p>Finally, we can use <code>.fill_between()</code> from matplotlib to fill in the area. This functions takes our x and y data, which we got from .get_xdata(), and .get_ydata(), to fill in the plot. Allow me to show what that looks like in actual code.</p>
-<div id="86fddb22" class="cell" data-execution_count="62">
+<div id="65bb39d5" class="cell" data-execution_count="62">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df[<span class="st">"gpa"</span>].plot.density()</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> ax.lines[<span class="dv">0</span>].get_xdata()</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> ax.lines[<span class="dv">0</span>].get_ydata()</span>
@@ -1292,7 +1300,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>Just like with histograms and boxplots, we can plot multiple datasets on the same graph to compare their distributions.</p>
-<div id="83552f49" class="cell" data-execution_count="63">
+<div id="32b3d8a4" class="cell" data-execution_count="63">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(color<span class="op">=</span><span class="st">"blue"</span>, label<span class="op">=</span><span class="st">"Class A"</span>)</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>more_data.plot.density(color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">"Class B"</span>)</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
@@ -1306,7 +1314,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>We can also fill in those multiple density plots. However, notice that if you fill them in, that you need to specify your color parameter in the <code>fill_between()</code> function instead of the <code>plot.density()</code> function.</p>
-<div id="db0f2829" class="cell" data-execution_count="64">
+<div id="866159c1" class="cell" data-execution_count="64">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df[<span class="st">"gpa"</span>].plot.density(label<span class="op">=</span><span class="st">"Class A"</span>)</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> ax.lines[<span class="dv">0</span>].get_xdata()</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> ax.lines[<span class="dv">0</span>].get_ydata()</span>
@@ -1329,7 +1337,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>However, you might notice its a bit harder to see the entire graph when they are both filled. If we want to make them more transparent, we can use the <code>alpha</code> parameter, which accepts a float between 0 and 1. Values closer to 0 create more transparency, while values closer to 1 make the plot more opaque. (The same comment I made about setting the color of a filled in graph also applies here with <code>alpha</code>.)</p>
-<div id="54dfb902" class="cell" data-execution_count="65">
+<div id="42a5da24" class="cell" data-execution_count="65">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df[<span class="st">"gpa"</span>].plot.density(label<span class="op">=</span><span class="st">"Class A"</span>)</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> ax.lines[<span class="dv">0</span>].get_xdata()</span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> ax.lines[<span class="dv">0</span>].get_ydata()</span>
@@ -1353,7 +1361,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 <p>One of the most important parameters for density plots is <code>bw_method</code>, which accepts a float or string value. This parameter affects how smooth or detailed your curve appears. A smaller float (like 0.1) creates a more detailed, jagged curve that follows the data closely, while a larger float (like 0.5) creates a smoother, more generalized curve. The string options include <code>'scott'</code> and <code>'silverman'</code>.</p>
 <p>I will demonstrate by showing each of the methods.</p>
-<div id="01b9ec88" class="cell" data-execution_count="66">
+<div id="c5555dce" class="cell" data-execution_count="66">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(bw_method<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">"Low Float"</span>)</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>plt.legend() </span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1365,7 +1373,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 </div>
-<div id="29c6ae59" class="cell" data-execution_count="67">
+<div id="0d7f60d0" class="cell" data-execution_count="67">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(bw_method<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"High Float"</span>)</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1377,7 +1385,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 </div>
-<div id="158d2768" class="cell" data-execution_count="68">
+<div id="58f557e0" class="cell" data-execution_count="68">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(bw_method<span class="op">=</span><span class="st">"scott"</span>, label<span class="op">=</span><span class="st">"Scott"</span>)</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1389,7 +1397,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 </div>
-<div id="e53e5ea6" class="cell" data-execution_count="69">
+<div id="42bbcb9e" class="cell" data-execution_count="69">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(bw_method<span class="op">=</span><span class="st">"silverman"</span>, label<span class="op">=</span><span class="st">"Silverman"</span>)</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1402,7 +1410,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>We can control the style of the line using the <code>linestyle</code> parameter, which is the same as in previous graphs.</p>
-<div id="e03b6ec5" class="cell" data-execution_count="70">
+<div id="1dcd37be" class="cell" data-execution_count="70">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"green"</span>)</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1414,7 +1422,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>The <code>linewidth</code> parameter is the same as with previous graphs.</p>
-<div id="222287ce" class="cell" data-execution_count="71">
+<div id="7c828b5a" class="cell" data-execution_count="71">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(linewidth<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Thin Line"</span>)</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1426,7 +1434,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 </div>
-<div id="3f66705f" class="cell" data-execution_count="72">
+<div id="1fd244d5" class="cell" data-execution_count="72">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(linewidth<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">"Thick Line"</span>)</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1440,7 +1448,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 <p>For density plots, we can also specify the range of x-values we want to plot using <code>xlim</code>, which accepts a tuple of two float values (min, max). This parameter is particularly useful when comparing datasets with different ranges, as it allows you to focus on a specific portion of the distribution or standardize the viewing window across multiple plots.</p>
 <p>It also has an equivalent function for y called <code>ylim</code>.</p>
-<div id="b667b795" class="cell" data-execution_count="73">
+<div id="2aed3656" class="cell" data-execution_count="73">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(xlim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">4</span>), color<span class="op">=</span><span class="st">"blue"</span>)</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1451,7 +1459,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 </div>
-<div id="9b37dff2" class="cell" data-execution_count="74">
+<div id="6ba94238" class="cell" data-execution_count="74">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>), color<span class="op">=</span><span class="st">"blue"</span>)</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -1463,7 +1471,7 @@ C:\Users\cnels\AppData\Local\Temp\ipykernel_20372\1134656318.py:2: UserWarning: 
 </div>
 </div>
 <p>Finally, let’s put everything together to create a comprehensive density plot with all the customizations we’ve learned:</p>
-<div id="36cf3a76" class="cell" data-execution_count="75">
+<div id="fd116efa" class="cell" data-execution_count="75">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].plot.density(color<span class="op">=</span><span class="st">"purple"</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, xlim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">4</span>), ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">1</span>), linewidth<span class="op">=</span><span class="dv">3</span>, linestyle<span class="op">=</span><span class="st">"-"</span>, label<span class="op">=</span><span class="st">"Morning Class"</span>)</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>more_data.plot.density(color<span class="op">=</span><span class="st">"orange"</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, xlim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">4</span>), ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">1</span>), linewidth<span class="op">=</span><span class="dv">3</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="st">"Evening Class"</span>)</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
